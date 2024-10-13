@@ -1,0 +1,17 @@
+---
+import { cn } from "$/lib";
+import { BoxSelect } from "lucide-astro";
+import { C } from "./index";
+---
+
+<div class={cn("flex flex-row pb-2")}>
+	<div class="mr-2 flex flex-col gap-2">
+		<slot />
+	</div>
+	<div
+		class="border-grey-100/10 text-grey-50 hover:border-grey-100/20 group ml-auto flex aspect-square h-fit w-fit items-center justify-center rounded-md border p-2 shadow-md focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-blue-400 disabled:pointer-events-none disabled:opacity-50">
+		<slot name="icon">
+			<BoxSelect class={C.H.iconStyle} />
+		</slot>
+	</div>
+</div>

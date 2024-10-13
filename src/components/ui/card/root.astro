@@ -1,0 +1,17 @@
+---
+import { cn } from "$/lib";
+
+let {
+	class: className = "",
+}: {
+	class?: string;
+} = Astro.props;
+---
+
+<div
+	class={cn(
+		"not-prose relative w-full max-w-[350px] overflow-hidden rounded-xl border border-grey-100/10 hover:border-grey-100/20 bg-grey-950/20 backdrop-blur-md p-6 shadow-md",
+		className
+	)}>
+	<slot />
+</div>

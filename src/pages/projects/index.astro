@@ -1,0 +1,49 @@
+---
+import Layout from "$/layouts/root.astro";
+import Card, { C } from "$/components/ui/card";
+
+// --- SANITY CMS ---
+import type { SanityDocument } from "@sanity/client";
+import { sanityClient } from "sanity:client";
+import imageUrlBuilder from "@sanity/image-url";
+import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
+
+const POSTS_QUERY = `*[
+  _type == "projects"
+  && defined(slug.current)
+]|order(publishedAt desc)[0...12]{_id, title, slug, publishedAt,image,tldr}`;
+
+const posts = await sanityClient.fetch<SanityDocument[]>(POSTS_QUERY);
+
+const { projectId, dataset } = sanityClient.config();
+const urlFor = (source: SanityImageSource) =>
+	projectId && dataset ? imageUrlBuilder({ projectId, dataset }).image(source) : null;
+// const postImageUrl = post.image ? urlFor(post.image)?.width(550).height(310).url() : null;
+---
+
+<Layout path="/projects" class="not-prose">
+	<h1 class="text-5xl font-normal font-mono my-5">Projects</h1>
+	<div class="w-full grid-cols-3 grid gap-4">
+		{
+			posts.map((post) => (
+				<Card>
+					<C.Header>
+						<C.H.Title>{post.title}</C.H.Title>
+						<C.H.Description>{post.tldr ?? "*description*"}</C.H.Description>
+					</C.Header>
+					<C.Content>
+						{(post.image ? urlFor(post.image)?.width(550).height(310).url() : null) && (
+							<img
+								src={post.image ? urlFor(post.image)?.width(550).height(310).url() : null}
+								alt={post.title}
+								class="aspect-video rounded-md"
+								width="550"
+								height="310"
+							/>
+						)}
+					</C.Content>
+				</Card>
+			))
+		}
+	</div>
+</Layout>

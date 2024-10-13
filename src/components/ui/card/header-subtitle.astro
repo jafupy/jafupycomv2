@@ -1,0 +1,9 @@
+---
+import { cn } from "$/lib";
+
+let { class: className = "" }: { class?: string } = Astro.props;
+---
+
+<span class={cn("text-grey-500 text-sm", className)}>
+	<slot />
+</span>
