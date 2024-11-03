@@ -2,7 +2,7 @@
 	import { newToast } from "$/toasts.svelte";
 	import { Command } from "lucide-svelte";
 
-	import { isSearchOpen } from "$/lib";
+	// import { isSearchOpen } from "$/lib";
 	import { onDestroy, onMount } from "svelte";
 
 	const openSearch = () => {
@@ -16,7 +16,7 @@
 		});
 		// }
 
-		$isSearchOpen = !$isSearchOpen;
+		// $isSearchOpen = !$isSearchOpen;
 	};
 
 	function handleKeydown(event) {

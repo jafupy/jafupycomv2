@@ -10,7 +10,7 @@ import Nav from "../components/root/Nav.astro";
 import Footer from "../components/root/Footer.astro";
 import Toaster from "$/toasts.svelte";
 
-import SearchMenu from "$/components/root/search-menu.svelte";
+// import SearchMenu from "$/components/root/search-menu.svelte";
 import SearchButton from "$/components/root/search-button.svelte";
 ---
 
@@ -27,7 +27,7 @@ import SearchButton from "$/components/root/search-button.svelte";
 	<body class="overflow-x-hidden scroll-smooth bg-grey-950 pt-12 text-white px-4">
 		<Nav />
 
-		<SearchMenu client:load />
+		<!-- <SearchMenu client:load /> -->
 
 		<main
 			class={cn(
