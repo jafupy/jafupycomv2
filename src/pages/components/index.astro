@@ -1,0 +1,75 @@
+---
+interface Props {
+	class?: string;
+}
+
+const { class: className } = Astro.props;
+
+import { cn } from "$/lib";
+import Nav from "$/components/root/Nav.astro";
+import Footer from "$/components/root/Footer.astro";
+import Toaster from "$/toasts.svelte";
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{"Jafu.py"}</title>
+	</head>
+	<body class="overflow-x-hidden scroll-smooth bg-white pt-12 text-grey-950 px-4">
+		<Nav light />
+
+		<main
+			class={cn(
+				" justify-center  mx-auto flex min-h-screen w-full max-w-5xl flex-col items-center px-0 py-12",
+				className
+			)}>
+			<!-- --------------------------------------------------------- -->
+			<h1 class="text-4xl font-bold my-4">Inputs</h1>
+
+			<div class="grid grid-cols-3">
+				<input type="text" />
+			</div>
+
+			<!-- --------------------------------------------------------- -->
+		</main>
+
+		<Footer />
+
+		<Toaster client:only="svelte" />
+	</body>
+</html>
+
+<style is:global>
+	@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap");
+
+	section {
+		@apply mx-auto;
+	}
+
+	main {
+		scroll-behavior: smooth;
+		scroll-snap-align: start;
+		scroll-snap-type: proximity;
+	}
+	article > aside {
+		@apply sticky top-20 flex flex-col items-center justify-center;
+	}
+
+	article > main > h1:first-child {
+		@apply mx-auto text-center font-mono text-5xl font-normal;
+	}
+	/* 
+*:focus {
+	@apply outline outline-blue-500;
+}  */
+
+	section {
+		@apply px-5;
+	}
+</style>

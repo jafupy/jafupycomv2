@@ -1,4 +1,9 @@
 ---
+export const prerender = false;
+
+import Layout from "$/layouts/md.astro";
+import { ChevronLeft } from "lucide-astro";
+
 import type { SanityDocument } from "@sanity/client";
 import { sanityClient } from "sanity:client";
 import imageUrlBuilder from "@sanity/image-url";
@@ -21,22 +26,19 @@ const urlFor = (source: SanityImageSource) =>
 const postImageUrl = post.image ? urlFor(post.image)?.width(550).height(310).url() : null;
 ---
 
-<main class="container mx-auto min-h-screen max-w-3xl p-8 flex flex-col gap-4">
-	<a href="/posts" class="hover:underline">&larr; Back to posts</a>
+<Layout>
+	<a
+		class="fixed left-12 top-20 pr-4 pl-2 py-1 border border-grey-100/10 bg-grey-950/20 rounded-lg not-prose flex justify-center items-center w-fit gap-2 backdrop-blur-md hover:border-grey-100/20"
+		href="/projects"><ChevronLeft class="w-4 h-4 inline" />Go back</a
+	>
 	{
 		postImageUrl && (
-			<img
-				src={postImageUrl}
-				alt={post.title}
-				class="aspect-video rounded-sm"
-				width="550"
-				height="310"
-			/>
+			<img src={postImageUrl} alt={post.title} class="aspect-video rounded-xl w-full" />
 		)
 	}
-	<h1 class="text-4xl font-bold mb-8">{post.title}</h1>
-	<div class="prose">
-		<p>Published: {new Date(post.publishedAt).toLocaleDateString()}</p>
-		{Array.isArray(post.body) && <PortableText value={post.body} />}
-	</div>
-</main>
+	<hgroup>
+		<h1 class="font-mono font-normal mb-0">{post.title}</h1>
+		<p class="mt-2 font-mono">{new Date(post.publishedAt).toLocaleDateString()}</p>
+	</hgroup>
+	{Array.isArray(post.body) && <PortableText value={post.body} />}
+</Layout>

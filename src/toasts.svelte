@@ -1,7 +1,7 @@
 <script lang="ts" context="module">
-	import { cn } from "../lib";
+	import { cn } from "$/lib";
 	import { createToaster, melt } from "@melt-ui/svelte";
-	import { CircleAlert, CircleX, Variable, X } from "lucide-astro";
+	import { CircleAlert, CircleX, Variable, X } from "lucide-svelte";
 	import { fly, scale } from "svelte/transition";
 	export type ToastData = {
 		title: string;
@@ -17,14 +17,15 @@
 	} = createToaster<ToastData>({ closeDelay: 5 * 1000, hover: "pause-all" }); // 5 sec
 
 	export const newToast = (data: ToastData) => {
+		// console.log("Toasts!");
 		helpers.addToast({ data });
 	};
 
 	const styles = {
-		success: "border-green-400 hover:border-green-300",
-		error: "border-red-400 hover:border-red-300",
-		warning: "border-yellow-400 hover:border-yellow-300",
-		info: "border-grey-100/10 hover:border-grey-100/20",
+		success: "border-green-400",
+		error: "border-red-400",
+		warning: "border-yellow-400",
+		info: "border-grey-100/10",
 	};
 </script>
 
@@ -42,7 +43,7 @@
 			}}
 			use:melt={$content(id)}
 			class={cn(
-				"group-[item] max-w-screen bg-grey-950/20 -mt-16 flex w-80 flex-col rounded-xl border p-4 text-sm shadow-md backdrop-blur-md transition-all group-hover:mt-2 group-hover:scale-100 group-hover:opacity-100",
+				"group-[item] max-w-screen bg-grey-950/20 -mt-16 flex w-80 flex-col rounded-xl border p-4 text-sm shadow-md backdrop-blur-md transition-all group-hover:mt-2 group-hover:scale-100 group-hover:opacity-100 hover:-translate-x-4",
 				styles[data.variant],
 				[
 					"",

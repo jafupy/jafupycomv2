@@ -1,16 +1,17 @@
 ---
 interface Props {
-	title?: string;
 	class?: string;
-	path: string;
 }
 
-const { title, class: className, path } = Astro.props;
+const { class: className } = Astro.props;
 
 import { cn } from "../lib";
 import Nav from "../components/root/Nav.astro";
 import Footer from "../components/root/Footer.astro";
-import Toaster from "../components/Toaster.svelte";
+import Toaster from "$/toasts.svelte";
+
+import SearchMenu from "$/components/root/search-menu.svelte";
+import SearchButton from "$/components/root/search-button.svelte";
 ---
 
 <!doctype html>
@@ -21,10 +22,12 @@ import Toaster from "../components/Toaster.svelte";
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{"Jaf // " + title}</title>
+		<title>{"Jafu.py"}</title>
 	</head>
 	<body class="overflow-x-hidden scroll-smooth bg-grey-950 pt-12 text-white px-4">
-		<Nav {path} />
+		<Nav />
+
+		<SearchMenu client:load />
 
 		<main
 			class={cn(
@@ -36,7 +39,7 @@ import Toaster from "../components/Toaster.svelte";
 
 		<Footer />
 
-		<Toaster client:load />
+		<Toaster client:only="svelte" />
 
 		<div
 			class="absolute left-1/2 top-0 -z-10 aspect-square w-screen max-w-52 -translate-x-1/2 -translate-y-1/2 blur-3xl sm:scale-[3] bg-prussian-blue-700">

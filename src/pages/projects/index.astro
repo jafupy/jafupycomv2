@@ -26,23 +26,29 @@ const urlFor = (source: SanityImageSource) =>
 	<div class="w-full grid-cols-3 grid gap-4">
 		{
 			posts.map((post) => (
-				<Card>
-					<C.Header>
-						<C.H.Title>{post.title}</C.H.Title>
-						<C.H.Description>{post.tldr ?? "*description*"}</C.H.Description>
-					</C.Header>
-					<C.Content>
-						{(post.image ? urlFor(post.image)?.width(550).height(310).url() : null) && (
-							<img
-								src={post.image ? urlFor(post.image)?.width(550).height(310).url() : null}
-								alt={post.title}
-								class="aspect-video rounded-md"
-								width="550"
-								height="310"
-							/>
-						)}
-					</C.Content>
-				</Card>
+				<a
+					href={`/projects/${post.publishedAt.split("-")[0]}/${post.publishedAt.split("-")[1]}/${post.slug.current}`}>
+					<Card>
+						<C.Header>
+							<C.H.Title>{post.title}</C.H.Title>
+							<C.H.Description>{post.tags}</C.H.Description>
+							<C.H.Description>{post.tldr ?? "*description*"}</C.H.Description>
+						</C.Header>
+						<C.Content>
+							{(post.image ? urlFor(post.image)?.width(550).height(310).url() : null) && (
+								<img
+									src={
+										post.image ? urlFor(post.image)?.width(550).height(310).url() : null
+									}
+									alt={post.title}
+									class="aspect-video rounded-md"
+									width="550"
+									height="310"
+								/>
+							)}
+						</C.Content>
+					</Card>
+				</a>
 			))
 		}
 	</div>

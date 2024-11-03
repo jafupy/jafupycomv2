@@ -1,78 +1,47 @@
 ---
-	import { assets, cn } from '../../lib';
-	import {
-		Command,
-		FolderKanban,
-		Hammer,
-		Newspaper,
-		User,
-	} from 'lucide-astro';
-	import Tag from '../ui/Tag.astro';
+import { assets, cn } from "$/lib";
+import { Command, FolderKanban, Hammer, Newspaper, User } from "lucide-astro";
+import Tag from "$/components/ui/Tag.astro";
+import Search from "./search-button.svelte";
 
-    interface Props {
-	path: string
+interface Props {
+	light?: boolean;
 }
-
-const { path } = Astro.props;
+let { light }: Props = Astro.props;
 ---
-
 
 <header class="fixed inset-x-4 top-4 z-50 p-0 sm:inset-x-12">
 	<nav
-		class="not-prose group flex list-none items-center justify-center rounded-xl border border-grey-100/10 bg-grey-950/20 p-1 pr-4 text-sm shadow-md backdrop-blur-md hover:border-grey-100/20 "
-	>
+		class={cn(
+			"not-prose group flex list-none items-center justify-center rounded-xl border p-1 text-sm shadow-md backdrop-blur-md",
+			light
+				? "bg-grey-50/20 border-grey-900/10 hover:border-grey-900/20"
+				: "bg-grey-950/20 border-grey-100/10 hover:border-grey-100/20"
+		)}>
 		<a href="/" class="flex items-center justify-between gap-2 pr-4">
 			<img src={assets.logo} alt="Logo" class="h-10 w-10 rounded-lg" />
 			<span class="text-sm">Jafu.py</span>
 		</a>
-		<Tag icon={Hammer}>{import.meta.env.DEV ? 'Dev' : 'Beta'}</Tag>
-		<ul
-		class="mx-auto flex-row items-center gap-4 sm:flex"
-	>
-		<li class="group flex items-center">
-			<a href="/#bio">
-				<User
-					strokeWidth={1}
-					class="mr-2 inline h-4 w-4 text-old-rose"
-                    
-				/>
-				Bio</a
-			>
-		</li>
-		<li class="group flex items-center">
-			<a href="/projects">
-				<FolderKanban
-					strokeWidth={1}
-					class="mr-2 inline h-4 w-4 text-old-rose"
-				/>
-				Projects</a
-			>
-		</li>
-		<li class="group flex items-center">
-			<a href="/blog"
-				><Newspaper
-					strokeWidth=1
-					class="mr-2 inline h-4 w-4 text-old-rose"
-				/> Blog</a
-			>
-		</li>
-	</ul>
+		<ul class="mx-auto flex-row items-center sm:flex gap-4">
+			<li class="group flex items-center">
+				<a href="/#bio">
+					<User strokeWidth={1} class="mr-2 inline h-4 w-4 text-old-rose" />
+					Bio</a
+				>
+			</li>
+			<li class="group-[li] flex items-center mx-4">
+				<a href="/projects">
+					<FolderKanban strokeWidth={1} class="mr-2 inline h-4 w-4 text-old-rose" />
+					Projects</a
+				>
+			</li>
+			<li class="group flex items-center">
+				<a href="/blog"
+					><Newspaper strokeWidth="1" class="mr-2 inline h-4 w-4 text-old-rose" /> Blog</a
+				>
+			</li>
+		</ul>
 
-		<!-- <button
-			onclick={() => {
-				newToast({
-					title: 'Coming Soon',
-					description: 'The robots are still working on this feature.',
-					variant: 'error',
-				});
-			}}
-			class="hidden cursor-not-allowed items-center rounded-md border border-grey-100/10 px-3 py-1 text-sm opacity-50 md:flex"
-			>Search
-			<span class="ml-2 flex items-center gap-1 font-mono text-xs">
-				<kbd><Command class="h-3 w-3 text-grey-500" /></kbd>+<kbd class=" text-grey-500">K</kbd>
-			</span>
-		</button> -->
-		
+		<Search client:only="svelte" />
 	</nav>
-	
 </header>

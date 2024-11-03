@@ -1,19 +1,24 @@
 ---
 interface Props {
-	title?: string;
 	class?: string;
-	path: string
+	noMain?: boolean;
 }
 
-const { title, class: className, path } = Astro.props;
+const { class: className, noMain } = Astro.props;
 
-import Root from './root.astro';
+import Root from "./root.astro";
 ---
 
-<Root {title} class={className} {path}>
-    <article class="max-w-ch-md">
-        <main>
-            <slot></slot>
-        </main>
-    </article>
+<Root class={className}>
+	<article class="max-w-ch-md">
+		{
+			noMain ? (
+				<slot />
+			) : (
+				<main>
+					<slot />
+				</main>
+			)
+		}
+	</article>
 </Root>

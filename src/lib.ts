@@ -1,6 +1,8 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
+import { writable } from "svelte/store";
+
 import Banner from "./assets/Banner.png";
 import Wikiredesign from "./assets/wikiredesign.png";
 
@@ -34,3 +36,5 @@ export const tw = {
 		800: "#12151F",
 	},
 };
+
+export const isSearchOpen = new writable(false);
