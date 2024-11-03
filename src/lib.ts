@@ -37,4 +37,4 @@ export const tw = {
 	},
 };
 
-export const isSearchOpen = new writable(false);
+// export const isSearchOpen = new writable(false);
