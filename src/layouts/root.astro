@@ -20,9 +20,35 @@ import SearchButton from "$/components/root/search-button.svelte";
 		<meta charset="UTF-8" />
 		<meta name="description" content="Astro description" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.png" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{"Jafu.py"}</title>
+
+		<!-- Open Graph Metadata -->
+		<meta property="og:title" content="Jafu.py" />
+		<meta
+			property="og:description"
+			content="Hey, I'm Jacob, aka jafu.py. I'm play minecraft and do web dev"
+		/>
+		<meta property="og:type" content="website" />
+		<!-- Use "article" for blog posts or news -->
+		<meta property="og:url" content="https://wwww.jafupy.com" />
+		<meta property="og:image" content="/banner.png" />
+		<meta property="og:site_name" content="Jafu.py" />
+
+		<!-- Twitter Card Metadata -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<!-- Or "summary" for smaller images -->
+		<meta name="twitter:title" content="Jafu.py" />
+		<meta
+			name="twitter:description"
+			content="Hey, I'm Jacob, aka jafu.py. I'm play minecraft and do web dev"
+		/>
+		<meta name="twitter:image" content="/banner.png" />
+		<meta name="twitter:site" content="@jafupy" />
+		<meta name="twitter:creator" content="@jafupy" />
+
+		<meta name="theme-color" content="#1e293b" />
 	</head>
 	<body class="overflow-x-hidden scroll-smooth bg-grey-950 pt-12 text-white px-4">
 		<Nav />
