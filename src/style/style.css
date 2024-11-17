@@ -1,9 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap");
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 section {
 	@apply mx-auto;
 }
@@ -15,10 +11,6 @@ main {
 }
 article > aside {
 	@apply sticky top-20 flex flex-col items-center justify-center;
-}
-
-article {
-	@apply pt-12;
 }
 
 body {
@@ -73,4 +65,10 @@ article > main > h1:first-child {
 
 section {
 	@apply px-5;
+}
+
+.backdrop-px {
+	background-image: radial-gradient(transparent 1px, #0f1315cc 1px);
+	background-size: 4px 4px;
+	backdrop-filter: blur(5px);
 }
