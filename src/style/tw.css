@@ -1,0 +1,9 @@
+.backdrop-px {
+	background-image: radial-gradient(transparent 1px, #0f1315cc 1px);
+	background-size: 4px 4px;
+	backdrop-filter: blur(5px);
+}
+
+.debug {
+	outline: 1px solid red;
+}
