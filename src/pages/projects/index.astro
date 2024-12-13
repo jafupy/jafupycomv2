@@ -27,8 +27,9 @@ const urlFor = (source: SanityImageSource) =>
 		{
 			posts.map((post) => (
 				<a
-					href={`/projects/${post.publishedAt.split("-")[0]}/${post.publishedAt.split("-")[1]}/${post.slug.current}`}>
-					<Card>
+					href={`/projects/${post.publishedAt.split("-")[0]}/${post.publishedAt.split("-")[1]}/${post.slug.current}`}
+					class="h-full">
+					<Card class="h-full">
 						<C.Header>
 							<C.H.Title>{post.title}</C.H.Title>
 							<C.H.Description>{post.tags}</C.H.Description>
