@@ -18,7 +18,6 @@
 
 		// $isSearchOpen = !$isSearchOpen;
 	};
-
 	function handleKeydown(event) {
 		isMac = navigator.userAgentData.platform === "macOS";
 		if ((isMac ? event.metaKey : event.ctrlKey) && event.key === "k") {
