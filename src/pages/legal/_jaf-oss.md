@@ -1,5 +1,5 @@
 ---
-# layout: "../../layouts/md.astro"
+# layout: "../../layouts/article.astro"
 title: "Jafu OSS License"
 ---
 
