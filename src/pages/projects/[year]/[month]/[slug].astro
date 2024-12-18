@@ -1,7 +1,7 @@
 ---
 export const prerender = false;
 
-import Layout from "$/layouts/md.astro";
+import Layout from "$/layouts/article.astro";
 import { ChevronLeft } from "lucide-astro";
 
 import type { SanityDocument } from "@sanity/client";
@@ -63,7 +63,7 @@ function calculateReadTime(portableText: unknown, wpm = 200) {
 
 <Layout>
 	<a
-		class="fixed left-12 top-20 pr-4 pl-2 py-1 border border-grey-100/10 bg-grey-950/20 rounded-lg not-prose flex justify-center items-center w-fit gap-2 backdrop-blur-md hover:border-grey-100/20"
+		class="fixed left-4 top-20 pr-4 pl-2 py-1 border border-grey-100/10 bg-grey-950/20 rounded-lg not-prose flex justify-center items-center w-fit gap-2 backdrop-blur-md hover:border-grey-100/20"
 		href="/projects"
 		><ChevronLeft class="w-4 h-4 inline" />Go back</a
 	>
