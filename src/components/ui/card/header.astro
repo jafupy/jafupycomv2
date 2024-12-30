@@ -2,16 +2,23 @@
 import { cn } from "$/lib";
 import { BoxSelect } from "lucide-astro";
 import { C } from "./index";
+
+let {
+	class: className = "",
+	icon: Icon = BoxSelect,
+	title,
+}: { class?: string; icon?: typeof BoxSelect; title? } = Astro.props;
 ---
 
-<div class={cn("flex flex-row pb-2")}>
-	<div class="mr-2 flex flex-col gap-2">
-		<slot />
+<div class="flex flex-col pb-2 gap-2">
+	<div class="flex gap-2">
+		<h2 class={cn("text-xl font-semibold", className)}>{title}</h2>
+		<div
+			class="border-grey-100/10 text-grey-50 hover:border-grey-100/20 group ml-auto flex aspect-square h-fit w-fit items-center justify-center rounded-md border p-2 shadow-md focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-blue-400 disabled:pointer-events-none disabled:opacity-50">
+			<Icon class={C.H.iconStyle} />
+		</div>
 	</div>
-	<div
-		class="border-grey-100/10 text-grey-50 hover:border-grey-100/20 group ml-auto flex aspect-square h-fit w-fit items-center justify-center rounded-md border p-2 shadow-md focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-blue-400 disabled:pointer-events-none disabled:opacity-50">
-		<slot name="icon">
-			<BoxSelect class={C.H.iconStyle} />
-		</slot>
+	<div class={cn("text-grey-500 text-sm", className)}>
+		<slot />
 	</div>
 </div>

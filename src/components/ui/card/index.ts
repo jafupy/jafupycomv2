@@ -10,8 +10,6 @@ export const C = {
 	Content,
 	Footer,
 	H: {
-		Title: HeaderTitle,
-		Description: HeaderDescription,
 		iconStyle: "h-4 w-4 group-hover:-rotate-12 text-old-rose",
 	},
 };

@@ -1,9 +1,0 @@
----
-import { cn } from "$/lib";
-
-let { class: className = "", ...props }: { class?: string } = Astro.props;
----
-
-<h3 class={cn("text-lg font-semibold leading-none tracking-tight", className)}>
-	<slot />
-</h3>
