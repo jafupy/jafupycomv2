@@ -6,11 +6,11 @@ interface Props {
 
 const { class: className, noMain } = Astro.props;
 
-import Root from "./barebones.astro";
+import Root from "./default.astro";
 ---
 
 <Root class={className}>
-	<article class="max-w-ch-md">
+	<article class="max-w-ch-md font-serif">
 		{
 			noMain ? (
 				<slot />
