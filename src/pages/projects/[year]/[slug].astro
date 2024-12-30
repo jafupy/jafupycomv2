@@ -32,7 +32,7 @@ function calculateReadTime(portableText: unknown, wpm = 200) {
 	function extractText(blocks) {
 		let text = "";
 
-		blocks.forEach((block) => {
+		blocks?.forEach((block) => {
 			if (block._type === "block") {
 				block.children.forEach((child) => {
 					if (child._type === "span") {
@@ -63,7 +63,7 @@ function calculateReadTime(portableText: unknown, wpm = 200) {
 
 <Layout>
 	<a
-		class="fixed left-4 top-20 pr-4 pl-2 py-1 border border-grey-100/10 bg-grey-950/20 rounded-lg not-prose flex justify-center items-center w-fit gap-2 backdrop-blur-md hover:border-grey-100/20"
+		class="fixed left-4 top-20 pr-4 pl-2 py-1 border border-grey-100/10 bg-grey-950/20 rounded-lg not-prose flex justify-center items-center w-fit gap-2 backdrop-blur-md hover:border-grey-100/20 font-sans"
 		href="/projects"
 		><ChevronLeft class="w-4 h-4 inline" />Go back</a
 	>
@@ -79,19 +79,20 @@ function calculateReadTime(portableText: unknown, wpm = 200) {
 			)
 		}
 		<hgroup class="md:absolute md:bottom-4 md:left-4">
-			<h1 class="font-mono font-normal mb-0">{post.title}</h1>
-			<p class="mt-2 font-mono">
+			<h1 class="mb-0 md:text-5xl">{post.title}</h1>
+			<p class="mt-2">
 				{
-					new Date(post.publishedAt).toLocaleDateString(
-						["locale", "en-US", "en-GB", "en"],
-						{
+					new Date(post.publishedAt)
+						.toLocaleDateString(["locale"], {
 							year: "numeric",
 							month: "short",
 							day: "numeric",
-						}
-					)
+						})
+						.split(" ")
+						.reverse()
+						.join(" ")
 				}
-				<span class="font-mono">{" / "}</span>
+				<span class="">{" / "}</span>
 				{
 					calculateReadTime(post.body) > 60
 						? `${calculateReadTime(post.body) % 60} min`
