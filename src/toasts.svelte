@@ -1,4 +1,7 @@
-<script lang="ts" context="module">
+<script
+	lang="ts"
+	context="module"
+>
 	import { cn } from "$/lib";
 	import { createToaster, melt } from "@melt-ui/svelte";
 	import { CircleAlert, CircleX, Variable, X } from "lucide-svelte";
@@ -61,9 +64,12 @@
 				{#if data.variant === "error"}
 					<CircleX class="mr-2 h-4 w-4 text-red-400" />
 				{:else if data.variant === "warning"}
-					<CircleAlert class="mr-2 h-4 w-4 text-yellow-400" />
+					<CircleAlert class="mr-2 h-4 w-4 text-yellow-400 " />
 				{/if}
-				<h3 class="font-semibold" use:melt={$title(id)}>
+				<h3
+					class="font-semibold"
+					use:melt={$title(id)}
+				>
 					{data.title}
 				</h3>
 				<button
@@ -74,7 +80,10 @@
 					<X class="h-4 w-4" />
 				</button>
 			</div>
-			<div class="text-sm" use:melt={$description(id)}>
+			<div
+				class="text-sm"
+				use:melt={$description(id)}
+			>
 				{data.description}
 			</div>
 		</div>

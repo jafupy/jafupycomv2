@@ -37,4 +37,24 @@ export const tw = {
 	},
 };
 
+/**
+ * Hashes a string using SHA-256 and returns the hexadecimal digest.
+ *
+ * @param {string} inputString - The string to hash.
+ * @return {Promise<string>} The hexadecimal hash of the string.
+ */
+async function hashString(inputString) {
+	const encoder = new TextEncoder();
+	const data = encoder.encode(inputString);
+
+	const hashBuffer = await crypto.subtle.digest("SHA-256", data); // Hash the data
+
+	// Convert the hash to a hexadecimal string
+	const hashArray = Array.from(new Uint8Array(hashBuffer));
+	const hashHex = hashArray.map((byte) => byte.toString(16).padStart(2, "0")).join("");
+
+	return hashHex;
+}
+
 // export const isSearchOpen = new writable(false);
+console.log(await hashString("jafupy"));

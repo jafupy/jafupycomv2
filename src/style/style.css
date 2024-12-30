@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Brygada+1918:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Manrope:wght@200..800&display=swap");
 
 @import "./tw.css";
 
@@ -10,9 +10,6 @@ main {
 	scroll-behavior: smooth;
 	scroll-snap-align: start;
 	scroll-snap-type: proximity;
-}
-article > aside {
-	@apply sticky top-20 flex flex-col items-center justify-center;
 }
 
 body {
@@ -58,7 +55,7 @@ body::after {
 }
 
 article > main > h1:first-child {
-	@apply mx-auto text-center font-mono text-5xl font-normal;
+	@apply mx-auto text-center text-5xl;
 }
 /* 
 *:focus {
