@@ -1,6 +1,6 @@
 ---
 import { cn } from "$/lib.ts";
-import { Tag as TagIcon } from "lucide-astro";
+import { Tag as TagIcon } from "lucide-svelte";
 
 let {
 	class: className = "",
@@ -15,7 +15,10 @@ let {
 	)}>
 	{
 		Icon && (
-			<Icon stroke-width={1} class="text-grey-500 mr-2 h-4 w-4 group-hover:-rotate-12" />
+			<Icon
+				stroke-width={1}
+				class="text-grey-500 mr-2 h-4 w-4 group-hover:-rotate-12"
+			/>
 		)
 	}
 	<slot />

@@ -30,12 +30,7 @@ export default defineConfig({
 		host: true,
 	},
 
-	vite: {
-		build: {
-			rollupOptions: {
-				external: ["html2canvas"],
-			},
-		},
+	vite:
 		resolve: {
 			alias: {
 				$: "/src",
