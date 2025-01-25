@@ -1,5 +1,5 @@
 ---
-export const prerender = true;
+export const prerender = false;
 
 import Layout from "$/layouts/default.astro";
 import Card, { C } from "$/components/ui/card";
@@ -25,7 +25,7 @@ const urlFor = (source: SanityImageSource) =>
 ---
 
 <Layout class="not-prose">
-	<h1 class="text-5xl font-normal font-mono my-5">Projects</h1>
+	<h1 class="text-5xl my-5 font-semibold">Projects</h1>
 	<div class="w-full grid-cols-3 h-fit grid gap-4">
 		{
 			posts.map((post) => (
