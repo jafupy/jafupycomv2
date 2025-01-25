@@ -29,8 +29,7 @@ export default defineConfig({
 		port: 3210,
 		host: true,
 	},
-
-	vite:
+	vite: {
 		resolve: {
 			alias: {
 				$: "/src",
