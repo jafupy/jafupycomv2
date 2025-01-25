@@ -31,12 +31,18 @@ export default defineConfig({
 	},
 
 	vite: {
+		build: {
+			rollupOptions: {
+				external: ["html2canvas"]
+			}
+		}
 		resolve: {
 			alias: {
 				$: "/src",
 			},
 		},
 	},
+
 	experimental: {
 		svg: true,
 	},
