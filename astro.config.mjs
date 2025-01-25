@@ -33,9 +33,9 @@ export default defineConfig({
 	vite: {
 		build: {
 			rollupOptions: {
-				external: ["html2canvas"]
-			}
-		}
+				external: ["html2canvas"],
+			},
+		},
 		resolve: {
 			alias: {
 				$: "/src",
