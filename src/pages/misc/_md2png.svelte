@@ -107,12 +107,12 @@
 		oninput={render}
 	></textarea>
 
-	<!-- <button
+	<button
 		use:melt={$dialogTrigger}
 		class="rounded-lg px-4 py-2 text-sm font-semibold bg-grey-950/20 border border-grey-100/10 hover:border-grey-100/20 flex items-center h-9 disabled:opacity-50 w-full justify-center"
 	>
 		Options
-	</button> -->
+	</button>
 
 	<div class="flex gap-0 items-center w-full transition-all">
 		<button
