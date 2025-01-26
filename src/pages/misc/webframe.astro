@@ -4,6 +4,7 @@ import { cn } from "$/lib";
 import Nav from "$/components/root/Nav.astro";
 import Footer from "$/components/root/Footer.astro";
 import Toaster from "$/toasts.svelte";
+import Stepper from "$/components/ui/stepper.svelte";
 
 import "$/style/style.css";
 
@@ -53,7 +54,7 @@ import SearchButton from "$/components/root/search-button.svelte";
 		/>
 		<meta
 			property="og:image"
-			content="/banner.png"
+			content="/banner-webframe.png"
 		/>
 		<meta
 			property="og:site_name"
@@ -68,15 +69,15 @@ import SearchButton from "$/components/root/search-button.svelte";
 		<!-- Or "summary" for smaller images -->
 		<meta
 			name="twitter:title"
-			content="Jafu.py"
+			content="WebFrame"
 		/>
 		<meta
 			name="twitter:description"
-			content="Hey, I'm Jacob, aka jafu.py. I'm play minecraft and do web dev"
+			content=""
 		/>
 		<meta
 			name="twitter:image"
-			content="/banner.png"
+			content="/banner-webframe.png"
 		/>
 		<meta
 			name="twitter:site"
@@ -93,14 +94,15 @@ import SearchButton from "$/components/root/search-button.svelte";
 		/>
 	</head>
 	<body class="overflow-x-hidden scroll-smooth bg-grey-950 text-white px-4">
-		<Nav />
+		<Stepper client:load />
+		<!-- <Nav />
 
-		<!-- <SearchMenu client:load /> -->
+
 		<div class="flex flex-row w-full">
 			<MD2PNG client:load />
 		</div>
 
-		<Footer />
+		<Footer /> -->
 
 		<Toaster client:only="svelte" />
 
