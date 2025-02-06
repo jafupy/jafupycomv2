@@ -6,7 +6,7 @@ interface Props {
 const { class: className } = Astro.props;
 
 import { cn } from "../lib";
-import Nav from "../components/root/Nav.astro";
+import Nav from "../components/root/Nav.svelte";
 import Footer from "../components/root/Footer.astro";
 import Toaster from "$/toasts.svelte";
 
@@ -109,7 +109,7 @@ import SearchButton from "$/components/root/search-button.svelte";
 		<Toaster client:only="svelte" />
 
 		<div
-			class="absolute left-1/2 top-0 -z-10 aspect-square w-screen max-w-52 -translate-x-1/2 -translate-y-1/2 blur-3xl sm:scale-[3] bg-prussian-blue-700">
+			class="absolute left-1/2 top-0 -z-10 aspect-square w-screen max-w-52 -translate-x-1/2 -translate-y-1/2 blur-3xl sm:scale-[3] bg-prussian-blue">
 		</div>
 	</body>
 </html>

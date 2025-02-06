@@ -6,7 +6,7 @@ interface Props {
 const { class: className } = Astro.props;
 
 import { cn } from "../lib";
-import Nav from "../components/root/Nav.astro";
+import Nav from "../components/root/Nav.svelte";
 import Footer from "../components/root/Footer.astro";
 import Toaster from "$/toasts.svelte";
 
@@ -20,46 +20,94 @@ import SearchButton from "$/components/root/search-button.svelte";
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" href="/favicon.png" />
-		<meta name="generator" content={Astro.generator} />
+		<meta
+			name="description"
+			content="Astro description"
+		/>
+		<meta
+			name="viewport"
+			content="width=device-width"
+		/>
+		<link
+			rel="icon"
+			href="/favicon.png"
+		/>
+		<meta
+			name="generator"
+			content={Astro.generator}
+		/>
 		<title>{"Jafu.py"}</title>
 
 		<!-- Open Graph Metadata -->
-		<meta property="og:title" content="Jafu.py" />
+		<meta
+			property="og:title"
+			content="Jafu.py"
+		/>
 		<meta
 			property="og:description"
 			content="Hey, I'm Jacob, aka jafu.py. I'm play minecraft and do web dev"
 		/>
-		<meta property="og:type" content="website" />
+		<meta
+			property="og:type"
+			content="website"
+		/>
 		<!-- Use "article" for blog posts or news -->
-		<meta property="og:url" content="https://wwww.jafupy.com" />
-		<meta property="og:image" content="/banner.png" />
-		<meta property="og:site_name" content="Jafu.py" />
+		<meta
+			property="og:url"
+			content="https://wwww.jafupy.com"
+		/>
+		<meta
+			property="og:image"
+			content="/banner.png"
+		/>
+		<meta
+			property="og:site_name"
+			content="Jafu.py"
+		/>
 
 		<!-- Twitter Card Metadata -->
-		<meta name="twitter:card" content="summary_large_image" />
+		<meta
+			name="twitter:card"
+			content="summary_large_image"
+		/>
 		<!-- Or "summary" for smaller images -->
-		<meta name="twitter:title" content="Jafu.py" />
+		<meta
+			name="twitter:title"
+			content="Jafu.py"
+		/>
 		<meta
 			name="twitter:description"
 			content="Hey, I'm Jacob, aka jafu.py. I'm play minecraft and do web dev"
 		/>
-		<meta name="twitter:image" content="/banner.png" />
-		<meta name="twitter:site" content="@jafupy" />
-		<meta name="twitter:creator" content="@jafupy" />
+		<meta
+			name="twitter:image"
+			content="/banner.png"
+		/>
+		<meta
+			name="twitter:site"
+			content="@jafupy"
+		/>
+		<meta
+			name="twitter:creator"
+			content="@jafupy"
+		/>
 
-		<meta name="theme-color" content="#1e293b" />
+		<meta
+			name="theme-color"
+			content="#1e293b"
+		/>
 	</head>
-	<body class="overflow-x-hidden scroll-smooth bg-grey-950 pt-12 text-white px-4">
-		<Nav />
+	<body class="overflow-x-hidden scroll-smooth pt-12 text-white px-4">
+		<Nav
+			client:load
+			request={Astro.request.headers.get("user-agent")}
+		/>
 
 		<!-- <SearchMenu client:load /> -->
 
 		<main
 			class={cn(
-				"prose-grey justify-center prose prose-invert mx-auto flex min-h-screen w-full max-w-5xl flex-col items-center px-0 py-12",
+				"prose-grey justify-center prose mx-auto flex min-h-screen w-full max-w-5xl flex-col items-center px-0 py-12",
 				className
 			)}>
 			<slot />
@@ -70,7 +118,7 @@ import SearchButton from "$/components/root/search-button.svelte";
 		<Toaster client:only="svelte" />
 
 		<div
-			class="absolute left-1/2 top-0 -z-10 aspect-square w-screen max-w-52 -translate-x-1/2 -translate-y-1/2 blur-3xl sm:scale-[3] bg-prussian-blue-700">
+			class="absolute left-1/2 top-0 -z-10 aspect-square w-screen max-w-52 -translate-x-1/2 -translate-y-1/2 blur-3xl sm:scale-[3] bg-prussian-blue">
 		</div>
 	</body>
 </html>
