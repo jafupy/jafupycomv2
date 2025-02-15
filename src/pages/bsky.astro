@@ -1,6 +1,9 @@
 ---
-return Astro.redirect("https://bsky.app/profile/jafupy.com", 302);
-// import Root from "$/layouts/barebones.astro";
+import Root from "$/layouts/barebones.astro";
 ---
 
-<!-- <Root /> -->
+<Root />
+<script>
+	const url = new URL("https://bsky.app/profile/jafupy.com");
+	window.location.replace(url);
+</script>
