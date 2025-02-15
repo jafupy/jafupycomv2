@@ -97,17 +97,17 @@ import SearchButton from "$/components/root/search-button.svelte";
 			content="#1e293b"
 		/>
 	</head>
-	<body class="overflow-x-hidden scroll-smooth pt-12 text-white px-4">
+	<body class="overflow-x-hidden scroll-smooth text-white px-4">
 		<Nav
 			client:load
-			request={Astro.request.headers.get("user-agent")}
+			locals={Astro.locals}
 		/>
 
 		<!-- <SearchMenu client:load /> -->
 
 		<main
 			class={cn(
-				"prose-grey justify-center prose mx-auto flex min-h-screen w-full max-w-5xl flex-col items-center px-0 py-12",
+				"prose-grey justify-center prose mx-auto flex min-h-screen w-full max-w-5xl flex-col items-center pb-0 px-4 pt-24",
 				className
 			)}>
 			<slot />
