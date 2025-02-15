@@ -5,7 +5,8 @@ import { Tag as TagIcon } from "lucide-svelte";
 let {
 	class: className = "",
 	icon: Icon = TagIcon,
-}: { class?: string; icon?: typeof TagIcon | false } = Astro.props;
+	iconClass,
+}: { class?: string; iconClass?: string; icon?: typeof TagIcon | false } = Astro.props;
 ---
 
 <span
@@ -17,7 +18,7 @@ let {
 		Icon && (
 			<Icon
 				stroke-width={1}
-				class="text-grey-500 mr-2 h-4 w-4 group-hover:-rotate-12"
+				class={cn("text-grey-500 mr-2 h-4 w-4 group-hover:-rotate-12", iconClass)}
 			/>
 		)
 	}
