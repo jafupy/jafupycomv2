@@ -1,4 +1,4 @@
-import {postType as Blog} from './blogType'
-import {postType as Projects} from './projectsType'
+import { postType as Blog } from "./blogType";
+import { postType as Projects } from "./projectsType";
 
-export const schemaTypes = [Blog, Projects]
+export const schemaTypes = [Blog, Projects];
