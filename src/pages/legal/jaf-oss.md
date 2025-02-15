@@ -3,17 +3,16 @@ layout: "../../layouts/article.astro"
 title: "Jafu OSS License"
 ---
 
-# The Jafu.py Open Source Software License
+<h1 class="text-7xl">
+The Jafu.py Open Source Software License
+</h1>
 
-<!-- <pre class="astro-code github-dark">
-<code> -->
+
 <span class="border-grey-100/10 backdrop-blur-md hover:border-grey-100/20 border bg-black/20 p-4 block rounded-lg font-sans">
 In Summary, non-commercial use only, no training LLMs, give credit, derivatives must be under this license.
 <span class="text-xs block text-grey-500"> Not legal advice. Read the full license below.</span>
 </span>
 
-<!-- </code>
-</pre> -->
 
 **Version 1.0**
 
@@ -26,7 +25,7 @@ This license governs the use, copying, modification, and distribution of the sof
 You are allowed to:
 
 - Use, copy, and modify the Software for personal, educational, or research purposes.
-- Distribute modified or unmodified versions of the Software, subject to the conditions listed below.
+- Distribute modified versions of the Software, subject to the conditions listed below.
 
 ## 2. Conditions
 
