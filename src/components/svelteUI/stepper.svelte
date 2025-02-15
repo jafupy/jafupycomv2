@@ -19,7 +19,18 @@
 		min = 0,
 		max = 999,
 		buttonless = false,
-	}: { value: number; min?: number; max?: number; buttonless?: boolean } = $props();
+		buttonClass,
+		unstyled = false,
+		class: className,
+	}: {
+		value: number;
+		min?: number;
+		max?: number;
+		buttonless?: boolean;
+		buttpnClass?: string;
+		class?: string;
+		unstyled?: boolean;
+	} = $props();
 	let prevCount: number = $state(count);
 	let inputCount: string = $state("0");
 	let isInputFocused = $state(false);
@@ -47,16 +58,23 @@
 
 <div
 	class={cn(
-		"flex flex-row items-center justify-center gap-2 ring ring-transparent border-y border-grey-100/10 hover:border-grey-100/20 w-fit rounded-full"
+		!unstyled &&
+			"flex flex-row items-center justify-center ring ring-transparent border-y border-grey-100/10 hover:border-grey-100/20 w-fit rounded-full",
+		className
 	)}
 >
-	<button
-		disabled={count <= 0 || count <= min}
-		class="rounded-full border border-grey-100/20 p-1.5 disabled:opacity-50"
-		onclick={subtract}><Minus class="h-4 w-4" /></button
-	>
+	{#if !buttonless}
+		<button
+			disabled={count <= 0 || count <= min}
+			class={cn(
+				"rounded-full border border-grey-100/20 p-1.5 disabled:opacity-50",
+				buttonClass
+			)}
+			onclick={subtract}><Minus class="h-4 w-4" /></button
+		>
+	{/if}
 	<div
-		class="relative flex gap-0 overflow-hidden font-mono"
+		class="relative flex gap-0 overflow-hidden font-mono px-2"
 		use:melt={$trigger}
 	>
 		<!-- Hundreds -->
@@ -117,19 +135,29 @@
 			pattern="[0-9]*"
 			bind:value={inputCount}
 			bind:focused={isInputFocused}
+			onclick={() => {
+				inputCount = count.toString();
+			}}
+			onfocusin={() => {
+				inputCount = count.toString();
+			}}
 			oninput={() => {
 				prevCount = count;
 				count = Math.min(Math.max(min, parseInt(inputCount) || 0), max);
 				inputCount = count.toString();
 			}}
-			class="w-full bg-transparent text-transparent focus:outline-none absolute inset-0 border-0 p-0 m-0 z-50 ring-0 outline-0"
+			class="w-full bg-transparent text-transparent focus:outline-none absolute inset-0 border-0 p-0 m-0 z-50 ring-0 outline-0 min-w-[1ch] px-2"
 			style="caret-color: white;"
 		/>
 	</div>
-	<button
-		disabled={count >= 999 || count >= max}
-		onclick={add}
-		class="rounded-full border border-grey-100/20 p-1.5 disabled:opacity-50"
-		><Plus class="h-4 w-4 " /></button
-	>
+	{#if !buttonless}
+		<button
+			disabled={count >= 999 || count >= max}
+			onclick={add}
+			class={cn(
+				"rounded-full border border-grey-100/20 p-1.5 disabled:opacity-50",
+				buttonClass
+			)}><Plus class="h-4 w-4 " /></button
+		>
+	{/if}
 </div>
