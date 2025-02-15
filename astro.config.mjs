@@ -1,7 +1,7 @@
 import { defineConfig } from "astro/config";
 
 import svelte from "@astrojs/svelte";
-import tailwind from "@astrojs/tailwind";
+import tailwind from "@tailwindcss/vite";
 import react from "@astrojs/react";
 import sanity from "@sanity/astro";
 import vercel from "@astrojs/vercel";
@@ -12,7 +12,6 @@ export default defineConfig({
 
 	integrations: [
 		svelte(),
-		tailwind(),
 		react(),
 		sanity({
 			projectId: "mtg067gg",
@@ -35,6 +34,7 @@ export default defineConfig({
 				$: "/src",
 			},
 		},
+		plugins: [tailwind()],
 	},
 
 	experimental: {
