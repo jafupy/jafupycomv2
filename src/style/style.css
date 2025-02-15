@@ -1,21 +1,26 @@
 @import url("https://fonts.googleapis.com/css2?family=Brygada+1918:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Manrope:wght@200..800&display=swap");
-
+@import "tailwindcss";
 @import "./tw.css";
 
 section {
-	@apply mx-auto;
+	margin-left: auto;
+	margin-right: auto;
+
+	padding-left: var(--spacing-5);
+	padding-right: var(--spacing-5);
 }
 
 main {
 	scroll-behavior: smooth;
-	scroll-snap-align: start;
-	scroll-snap-type: proximity;
+	scroll-snap-align: center;
+	scroll-snap-type: y proximity;
 }
 
 body {
 	--grid-size: 5rem;
-	--grid-color: hsla(199deg, 10.1%, 57.3%, 0.04);
-	--grid-bg-color: hsla(200deg, 16.7%, 7.06%, 1);
+	/* --grid-color: oklch(var(--color-grey-100) / 1); */
+	--grid-color: oklch(66.4% 0.0201 227deg / 4%);
+	--grid-bg-color: var(--color-grey-950);
 
 	background: linear-gradient(
 			0deg,
@@ -42,6 +47,7 @@ body {
 			transparent
 		);
 	background-size: var(--grid-size) var(--grid-size);
+	background-color: var(--color-grey-950);
 }
 body::after {
 	z-index: -49;
@@ -51,17 +57,13 @@ body::after {
 	left: 0;
 	height: 100%;
 	width: 100%;
-	background: radial-gradient(circle at center, transparent, var(--grid-bg-color) 80%);
+	background: radial-gradient(
+		circle at center,
+		transparent,
+		var(--grid-bg-color) 80%
+	);
 }
-
-article > main > h1:first-child {
-	@apply mx-auto text-center text-5xl;
-}
-/* 
-*:focus {
-	@apply outline outline-blue-500;
-}  */
-
-section {
-	@apply px-5;
+.prose
+	:where(a):not(:where([class~="not-prose"], [class~="not-prose"] *)):hover {
+	color: var(--color-old-rose);
 }
