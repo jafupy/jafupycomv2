@@ -17,7 +17,7 @@
 		light?: boolean;
 	}
 
-	const { children, light, request } = $props();
+	const { children, light, locals } = $props();
 
 	let isNavOpen = $state(false);
 </script>
@@ -70,7 +70,7 @@
 				>
 			</li>
 
-			<Search {request} />
+			<Search {locals} />
 		</ul>
 		<button
 			onclick={() => (isNavOpen = !isNavOpen)}
@@ -134,7 +134,7 @@
 		</li>
 
 		<Search
-			{request}
+			request={_req}
 			class="w-full flex-none"
 		/>
 	</ul>

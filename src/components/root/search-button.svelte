@@ -3,17 +3,10 @@
 	import { newToast } from "$/toasts.svelte";
 	import { Command } from "lucide-svelte";
 
-	const { request, class: className } = $props();
+	const { locals, class: className } = $props();
 
 	// import { isSearchOpen } from "$/lib";
 	import { onDestroy, onMount } from "svelte";
-
-	let isMac;
-	try {
-		isMac = navigator?.userAgentData?.platform === "macOS";
-	} catch (e) {
-		isMac = /Macintosh|Mac OS X/i.test(request);
-	}
 
 	const openSearch = () => {
 		// console.log("Click!");
@@ -54,7 +47,7 @@
 	>Search
 	<span class="ml-2 flex items-center gap-1 font-mono text-xs">
 		<kbd>
-			{#if isMac}
+			{#if locals.isMac}
 				<Command class="h-3 w-3 text-grey-500" />
 			{:else}
 				ctrl
