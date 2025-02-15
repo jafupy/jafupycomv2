@@ -1,11 +1,11 @@
 <script>
-	import { DownloadIcon, ClipboardIcon, X } from "lucide-svelte";
+	import { DownloadIcon, ClipboardIcon, X, GroupIcon } from "lucide-svelte";
 	import html2canvas from "html2canvas";
-	import { createTooltip, melt, createDialog } from "@melt-ui/svelte";
+	import { createTooltip, melt } from "@melt-ui/svelte";
 	import { fade, fly } from "svelte/transition";
 	import { cn } from "$/lib";
 	import { newToast } from "$/toasts.svelte";
-	import Stepper from "$/components/ui/stepper.svelte";
+	import Stepper from "$/components/svelteUI/stepper.svelte";
 
 	const {
 		elements: { trigger: tooltipTrigger, content: tooltipContent },
@@ -17,20 +17,6 @@
 		openDelay: 500,
 		closeDelay: 0,
 		closeOnPointerDown: true,
-		forceVisible: true,
-	});
-	const {
-		elements: {
-			trigger: dialogTrigger,
-			overlay: dialogOverlay,
-			content: dialogContent,
-			title: dialogTitle,
-			description: dialogDescription,
-			close: dialogClose,
-			portalled: dialogPortalled,
-		},
-		states: { open: dialogOpen },
-	} = createDialog({
 		forceVisible: true,
 	});
 
@@ -45,6 +31,7 @@
 		height = $state(0);
 		aspectRatio = $state(16 / 9);
 		backgroundColor = $state("#0F1315");
+		padding = $state([0, 0]);
 	})();
 
 	async function render() {
@@ -93,6 +80,15 @@
 			variant: "success",
 		});
 	}
+
+	$effect(() => {
+		newToast({
+			title: "Webframe is still in development!",
+			description:
+				"Webframe is not yet complete, but you're welcome to play with it anyways. ",
+			variant: "warning",
+		});
+	});
 </script>
 
 <aside
@@ -107,12 +103,22 @@
 		oninput={render}
 	></textarea>
 
-	<button
-		use:melt={$dialogTrigger}
-		class="rounded-lg px-4 py-2 text-sm font-semibold bg-grey-950/20 border border-grey-100/10 hover:border-grey-100/20 flex items-center h-9 disabled:opacity-50 w-full justify-center"
-	>
-		Options
-	</button>
+	<!--  -->
+	<span class="flex gap-0 items-center text-sm">
+		<span
+			class="border border-grey-100/10 p-1 rounded-l-md px-2 pl-2 h-full items-center flex"
+			><GroupIcon class="size-5 " /></span
+		>
+		<Stepper
+			bind:value={options.width}
+			min={0}
+			max={999}
+			buttonClass="rounded-md"
+			class="border rounded-l-none border-l-0 border-grey-100/10 rounded-r-lg p-1  bg-grey-800/20"
+		/>
+	</span>
+
+	<!--  -->
 
 	<div class="flex gap-0 items-center w-full transition-all">
 		<button
@@ -166,77 +172,6 @@
 		>
 			<h1 class="text-3xl font-semibold font-serif text-white">WebFrame</h1>
 			<p class="">Create Pictures from HTML with ease.</p>
-		</div>
-	{/if}
-
-	{#if $dialogOpen}
-		<div use:melt={$dialogPortalled}>
-			<div
-				use:melt={$dialogOverlay}
-				class="fixed inset-0 z-50 backdrop-px"
-				transition:fade={{ duration: 150 }}
-			/>
-			<div
-				class="fixed left-1/2 top-1/2 z-50 max-h-[85vh] w-[90vw] max-w-[450px] -translate-x-1/2 -translate-y-1/2 bg-grey-950/20 backdrop-blur-md flex flex-col justify-center items-center gap-4 rounded-lg border border-grey-100/10 p-4"
-				transition:fly={{
-					duration: 200,
-					y: 20,
-				}}
-				use:melt={$dialogContent}
-			>
-				<h2
-					use:melt={$dialogTitle}
-					class="text-xl font-semibold text-white"
-				>
-					Configure
-				</h2>
-				<p
-					use:melt={$dialogDescription}
-					class="mb-5 mt-2 leading-normal text-zinc-600"
-				>
-					Make changes to your profile here. Click save when you're done.
-				</p>
-				<form action="">
-					<fieldset class="flex gap-2 items-center w-full">
-						<label
-							for="width"
-							class="block text-sm text-grey-600">Width</label
-						>
-						<Stepper
-							bind:count={options.width}
-							min={0}
-							max={999}
-						/>
-					</fieldset>
-
-					<div class="mt-6 flex justify-end gap-4">
-						<button
-							use:melt={$dialogClose}
-							class="inline-flex h-8 items-center justify-center rounded-sm
-                        bg-zinc-100 px-4 font-medium leading-none text-zinc-600"
-						>
-							Cancel
-						</button>
-						<button
-							type="submit"
-							use:melt={$dialogClose}
-							class="inline-flex h-8 items-center justify-center rounded-sm
-                    bg-magnum-100 px-4 font-medium leading-none text-magnum-900"
-						>
-							Save changes
-						</button>
-					</div>
-				</form>
-				<button
-					use:melt={$dialogClose}
-					aria-label="close"
-					class="absolute right-4 top-4 inline-flex h-6 w-6 appearance-none
-                items-center justify-center rounded-full p-1 text-magnum-800
-                hover:bg-magnum-100 focus:shadow-magnum-400"
-				>
-					<X class="size-4" />
-				</button>
-			</div>
 		</div>
 	{/if}
 </main>
